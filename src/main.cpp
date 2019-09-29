@@ -2,15 +2,15 @@
 #include <iostream>
 #include <thread>
 
-#include "board.h"
+#include "game.h"
 
 int main(int argc, char const *argv[])
 {
-    Board board;
+    Game game;
 
     while (true) {
         for (int i = 0; i < 100; i++) std::cout << std::endl; 
-        board.simpleRender();
+        game.simpleRender();
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }

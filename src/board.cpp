@@ -3,11 +3,7 @@
 #include "board.h"
 
 Board::Board() {
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            boardArray[i][j] = 0;
-        }
-    }   
+    //
 }
 
 void Board::simpleRender() {
@@ -16,7 +12,7 @@ void Board::simpleRender() {
     for (int i = 0; i < height; i++) {
         std::cout << " │ ";
         for (int j = 0; j < width; j++) {
-            std::cout << boardArray[i][j] << " ";
+            std::cout << mainMemory[i][j] << " ";
         }
         std::cout << "│" << std::endl;    
     }   
