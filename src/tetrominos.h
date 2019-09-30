@@ -1,3 +1,6 @@
+#ifndef TETROMINOS_H
+#define TETROMINOS_H
+
 // Collection of all tetraminios and all possible rotation based on
 // Super rotation system https://strategywiki.org/wiki/Tetris/Rotation_systems
 
@@ -33,3 +36,5 @@ int tetrominos[1][4][4][4] = {
         }
     }
 };
+
+#endif
