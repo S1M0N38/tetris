@@ -4,7 +4,7 @@
 class Tetromino
 {
 public:
-    Tetromino(int type, int rotation, int y = 0, int x = 3);
+    Tetromino();
     ~Tetromino();
     int** getBoard();
     void moveRight() {x += 1;};
@@ -13,7 +13,8 @@ public:
     void rotate() {rotation = (rotation + 1) % 4;};
 
 private:
-    int y, x;
+    int y = 0;
+    int x = 3;
     int rotation;
     int type;
     int** board;

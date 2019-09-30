@@ -1,14 +1,16 @@
 #include <iostream>
 
+#include <stdlib.h>
+#include <time.h>
+
 #include "tetrominos.h"
 #include "tetromino.h"
 
-Tetromino::Tetromino(int t, int r, int yPos, int xPos) {
-    // todo make random
-    y = yPos;
-    x = xPos;
-    rotation = r;
-    type = t;
+
+Tetromino::Tetromino() {
+    srand(time(nullptr));
+    type = rand() % 7;
+    rotation = rand() % 4; 
 
     // init board
     board = new int* [20 + 4];

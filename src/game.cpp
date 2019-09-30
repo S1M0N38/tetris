@@ -2,7 +2,7 @@
 
 #include "game.h"
 
-Game::Game (): tetromino(0,0) {
+Game::Game (): tetromino() {
 }
 
 void Game::render () {
