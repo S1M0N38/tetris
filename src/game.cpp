@@ -1,12 +1,15 @@
-#include <string>
-#include <iostream>
-
 #include "game.h"
 
 Game::Game() {
-    //
 }
 
+void Game::render() {
+}
+
+void Game::updateBoard() {
+}
+
+/*
 void Game::simpleRender() {
     // this member function is just for testing purpose        
     drawBoard();
@@ -25,7 +28,6 @@ void Game::simpleRender() {
     std::cout << " └";
     for (int i = 0; i <= height; i++) std::cout << "─";
     std::cout << "┘" << std::endl << std::endl;
-    */
 }
 
 void Game::drawBoard() {
@@ -43,3 +45,4 @@ void Game::drawBoard() {
     row += "┘ ";
     gameRender[height] = row; 
 }
+*/

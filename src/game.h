@@ -1,29 +1,20 @@
-#include <string>
+#include "tetromino.h"
 
 #ifndef GAME_H
 #define GAME_H
 
-class Game {
-
+class Game
+{
 public:
     Game();
-    void simpleRender();
-    // TODO void render();
+    void render();
+    void updateBoard();
 
 private:
-	// meomory components
     static const int height = 20;
     static const int width = 10;
     int board[height][width] = {};
-
-    // rendering components
-    std::string gameRender[height + 1];
-    void drawBoard();
-    /*
-    int nextPiece[4][2]
-    int storePiece[4][2]
-    */
-
+    Tetromino tetromino;
 };
 
 #endif
