@@ -9,7 +9,7 @@
 //             │  ┌ height
 //             │  │  ┌ width
 //             │  │  │  ┌ rotation 
-int tetrominos[1][4][4][4] = {
+int tetrominos[7][4][4][4] = {
     {
         {
             {0, 0, 0, 0},
