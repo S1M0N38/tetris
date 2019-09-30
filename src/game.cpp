@@ -7,13 +7,21 @@ Game::Game (): tetromino() {
 
 void Game::render () {
     // print tetromino test
-    for (int i = 0; i < 24; ++i) {
+    mvaddch(1, 2, ACS_ULCORNER);
+    for (int i = 0; i < 20; ++i) addch(ACS_HLINE);
+    addch(ACS_URCORNER);
+    for (int i = 4; i < 24; ++i) {
+        mvaddch(i - 2, 2, ACS_VLINE);
         for (int j = 0; j < 10; ++j) {
-            // imporve getBoard()
-            printw(" %d", tetromino.getBoard()[i][j]);
+            attron(COLOR_PAIR(tetromino.getBoard()[i][j]));
+            printw("  ");
+            attroff(COLOR_PAIR(tetromino.getBoard()[i][j]));
         }
-        printw("\n");
+        addch(ACS_VLINE);
     }
+
+    move(22, 2);
+    for (int i = 0; i < 22; ++i) addch(ACS_S1);
 }
 
 void Game::updateBoard () {
