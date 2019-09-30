@@ -3,6 +3,7 @@
 
 // Collection of all tetraminios and all possible rotation based on
 // Super rotation system https://strategywiki.org/wiki/Tetris/Rotation_systems
+// I, J 
 
 //             ┌ type
 //             │  ┌ height
@@ -34,7 +35,33 @@ int tetrominos[1][4][4][4] = {
             {0, 6, 0, 0},
             {0, 6, 0, 0},
         }
-    }
+    },
+    {
+        {
+            {4, 0, 0, 0},
+            {4, 4, 4, 0},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0,}
+        },
+        {   
+            {0, 4, 4, 0},
+            {0, 4, 0, 0},
+            {0, 4, 0, 0},
+            {0, 0, 0, 0}
+        },
+        {
+            {0, 0, 0, 0},
+            {4, 4, 4, 0},
+            {0, 0, 4, 0},
+            {0, 0, 0, 0},
+        },
+        {
+            {0, 4, 0, 0},
+            {0, 4, 0, 0},
+            {4, 4, 0, 0},
+            {0, 0, 0, 0},
+        }
+    },
 };
 
 #endif
