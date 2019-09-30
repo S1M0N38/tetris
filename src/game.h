@@ -9,6 +9,7 @@ public:
     Game();
     void render();
     void updateBoard();
+    void trasformTetromino(int);
 
 private:
     static const int height = 20;
