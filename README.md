@@ -1,15 +1,20 @@
-# tetris
+# Tetris
 
-A simple terminal tetris
-`# TODO`
+This project is a simple c++ implementation of the famous *Tetris*. It run in the
+terminal (aka command prompt) and use [Extended ASCII](https://en.wikipedia.org/wiki/Extended_ASCII)
+(a widespread character encodings) to recreate a simple user interface.
 
 ## Installation
 
-`# TODO`
+1. clone this repo `git clone https://github.com/S1M0N38/tetris.git`
+2. navigate to cloned repo `cd tetris`
+3. complie files `g++ -lncurses src/main.cpp src/tetromino.cpp src/game.cpp -o tetris`
 
 ## Usage
 
-`# TODO`
+1. navigate to cloned repo `cd tetris`
+2. start tetris game `./tetris`
+3. exit tetris game with `ctrl-C`
 
 ## Detail of implementation
 
