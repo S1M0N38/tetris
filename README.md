@@ -21,7 +21,24 @@ terminal (aka command prompt) and use [Extended ASCII](https://en.wikipedia.org/
 This version of Tetris meant to be as close as possible to the ordinary ones.
 Here are the references that I consult to recreate the game mechanics.
 
-### Tetromino rotation system
+### Tetrominoes definition
+
+Tetrominoes are literally the building blocks of Tetris. From a mathematical
+point of view *a tetromino is a geometric shape composed of four squares,
+connected orthogonally [(Wikipedia)](https://en.wikipedia.org/wiki/Tetromino).*
+In this game, the tetrominoes definition are stored in *tetrominoes.h* under the
+*tetrominoes* 4D array. This array include all tetrominoes of classical
+Tetris (seven) and their possible rotations (four each). A single rotation of a
+specific tetromino is store as a 4 x 4 array filled with zero except for the
+position occupied by the squares of the tetromino. The non-zeros value are
+some special int value. These number are the same ones that appear in the
+colors escaping sequnces: a special sequence of characters able to generate
+colors in (pretty much) every terminal. So chosing the right number is
+important in order to generate the desiderable color. I try to stick to the
+original tetromino-color combination, but there is no orange so the
+L-tetromino will be white.
+
+### Tetrominoes rotation system
 
 > Super Rotation System, or SRS, is the current Tetris Guideline standard for
 > how tetrominoes behave, defining where and how the tetrominoes spawn, how
@@ -47,3 +64,7 @@ minium waiting time for the user input is one tenth of a seconds). So at level
 at level 2 every 8 frames and so on... When player reach level 9 or above,
 level index continue growing but the game cannot update its state faster so
 the block doesn't speed up.
+
+### Game graphics
+
+`# TODO`
