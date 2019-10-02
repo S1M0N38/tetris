@@ -23,7 +23,7 @@ Here are the references that I consult to recreate the game mechanics.
 > they rotate, and what wall kicks they may perform. Henk Rogers developed this
 > system in order to unify all new Tetris games under the Tetris Guideline.
 >
-[Strategywiki - Tetris Rotation Systems]("https://strategywiki.org/wiki/Tetris/Rotation_systems")
+[Strategywiki - Tetris Rotation Systems](https://strategywiki.org/wiki/Tetris/Rotation_systems)
 
 ### Level up and FPS
 
@@ -34,7 +34,7 @@ Here are the references that I consult to recreate the game mechanics.
 > a piece falls one step every 2 frames. Level increments either terminate at
 > a certain point (Game Boy Tetris tops off at level 20).
 >
- [Wikipedia - Tetris]("https://en.wikipedia.org/wiki/Tetris")
+[Wikipedia - Tetris](https://en.wikipedia.org/wiki/Tetris)
 
 My FPS is limited to ~ 10 FPS by the *<ncurses.h> halfdelay* function (the
 minium waiting time for the user input is one tenth of a seconds). So at level
