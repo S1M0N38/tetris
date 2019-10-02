@@ -24,8 +24,8 @@ Here are the references that I consult to recreate the game mechanics.
 ### Tetrominoes definition
 
 Tetrominoes are literally the building blocks of Tetris. From a mathematical
-point of view *a tetromino is a geometric shape composed of four squares,
-connected orthogonally [(Wikipedia)](https://en.wikipedia.org/wiki/Tetromino).*
+point of view **a tetromino is a geometric shape composed of four squares,
+connected orthogonally [(Wikipedia)](https://en.wikipedia.org/wiki/Tetromino).**
 In this game, the tetrominoes definition are stored in *tetrominoes.h* under the
 *tetrominoes* 4D array. This array include all tetrominoes of classical
 Tetris (seven) and their possible rotations (four each). A single rotation of a
