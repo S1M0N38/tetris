@@ -1,17 +1,16 @@
-#include <iostream>
-
-#include <stdlib.h>
-#include <time.h>
+#include <random>
 
 #include "tetrominos.h"
 #include "tetromino.h"
 
 
 Tetromino::Tetromino() {
-    srand(time(nullptr));
-    // TODO fix, now is not random
-    type = rand() % 7;
-    rotation = rand() % 4; 
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> type_gen(0, 6);
+    std::uniform_int_distribution<> rotation_gen(0, 3);
+    type = type_gen(gen);
+    rotation = rotation_gen(gen); 
 
     // init board
     board = new int* [20 + 4];
