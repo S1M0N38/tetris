@@ -6,18 +6,19 @@ class Tetromino
 public:
     Tetromino();
     ~Tetromino();
-    int** getBoard();
-    void moveRight() {x += 1;};
-    void moveLeft() {x -= 1;};
-    void moveDown() {y += 1;};
-    void rotate() {rotation = (rotation + 1) % 4;};
+    int** updateBoard();
+    void moveRight();
+    void moveLeft();
+    void moveDown();
+    void rotate();
+    int** board;
 
 private:
     int y = 0;
     int x = 3;
     int rotation;
     int type;
-    int** board;
+    bool collideWithBorder();
 };
 
 #endif

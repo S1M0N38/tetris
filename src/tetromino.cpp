@@ -9,6 +9,7 @@
 
 Tetromino::Tetromino() {
     srand(time(nullptr));
+    // TODO fix, now is not random
     type = rand() % 7;
     rotation = rand() % 4; 
 
@@ -17,6 +18,7 @@ Tetromino::Tetromino() {
     for (int i = 0; i < 20 + 4; ++i) {
         board[i] = new int [10];
     }
+    updateBoard();
 }
 
 Tetromino::~Tetromino() {
@@ -25,8 +27,8 @@ Tetromino::~Tetromino() {
     delete[] board;
 }   
 
-int** Tetromino::getBoard() {
-    // compute with current x, y, type, rotation
+int** Tetromino::updateBoard() {
+    // compute with current x, y, type and rotation
     // and return board
     for (int i = 0; i < 20 + 4; ++i) {
         for (int j = 0; j < 10; ++j) {
@@ -39,4 +41,36 @@ int** Tetromino::getBoard() {
         }
     }
     return board;
+}
+
+bool Tetromino::collideWithBorder() {
+    updateBoard();
+    int block = 0;
+    for (int i = 0; i < 20 + 4; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (board[i][j] != 0) block += 1;
+        }
+    }
+    if (block < 4) return true;
+    return false;
+}
+
+void Tetromino::moveRight() {
+    x += 1;
+    if (collideWithBorder()) x -= 1;
+}
+
+void Tetromino::moveLeft() {
+    x -= 1;
+    if (collideWithBorder()) x += 1;
+}
+
+void Tetromino::moveDown() {
+    y += 1; updateBoard();
+    if (collideWithBorder()) y -= 1;
+}
+
+void Tetromino::rotate() {
+    rotation = (rotation + 1) % 4;
+    if (collideWithBorder()) rotation = (rotation + 3) % 4;
 }
