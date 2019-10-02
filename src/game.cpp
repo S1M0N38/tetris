@@ -24,8 +24,10 @@ void Game::render () {
     for (int i = 0; i < 22; ++i) addch(ACS_S1);
 }
 
-void Game::updateBoard () {
-
+void Game::updateState () {
+    // push row down
+    tetromino.moveDown();
+    // if (completedRows % 10 > 9 && level < 9) level += 1;
 }
 
 void Game::trasformTetromino (int key) {
