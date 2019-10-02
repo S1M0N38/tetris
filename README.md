@@ -14,7 +14,7 @@ A simple terminal tetris
 ## Detail of implementation
 
 This version of Tetris meant to be as close as possible to the ordinary ones.
-Here are the reference that is consult to recreate the game mechanics.
+Here are the references that I consult to recreate the game mechanics.
 
 ### Tetromino rotation system
 
