@@ -66,7 +66,7 @@ void Tetromino::moveLeft() {
 }
 
 void Tetromino::moveDown() {
-    y += 1; updateBoard();
+    y += 1;
     if (collideWithBorder()) y -= 1;
 }
 
