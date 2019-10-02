@@ -19,7 +19,8 @@ terminal (aka command prompt) and use [Extended ASCII](https://en.wikipedia.org/
 ## Detail of implementation
 
 This version of Tetris meant to be as close as possible to the ordinary ones.
-Here are the references that I consult to recreate the game mechanics.
+Here are the references that I consult to recreate the game mechanics and some
+brief explanations of the design choices.
 
 ### Tetrominoes definition
 
