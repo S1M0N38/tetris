@@ -7,10 +7,10 @@ public:
     Tetromino();
     ~Tetromino();
     int** updateBoard();
-    void moveRight();
-    void moveLeft();
-    void moveDown();
-    void rotate();
+    bool moveRight();
+    bool moveLeft();
+    bool moveDown();
+    bool rotate();
     int** board;
 
 private:

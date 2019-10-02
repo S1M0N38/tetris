@@ -55,22 +55,38 @@ bool Tetromino::collideWithBorder() {
     return false;
 }
 
-void Tetromino::moveRight() {
+bool Tetromino::moveRight() {
     x += 1;
-    if (collideWithBorder()) x -= 1;
+    if (collideWithBorder()) {
+         x -= 1;
+        return false;
+    }
+    return true;
 }
 
-void Tetromino::moveLeft() {
+bool Tetromino::moveLeft() {
     x -= 1;
-    if (collideWithBorder()) x += 1;
+    if (collideWithBorder()) {
+        x += 1;
+        return false;
+    } 
+    return true;
 }
 
-void Tetromino::moveDown() {
+bool Tetromino::moveDown() {
     y += 1;
-    if (collideWithBorder()) y -= 1;
+    if (collideWithBorder()) {
+        y -= 1;
+        return false;
+    }
+    return true;
 }
 
-void Tetromino::rotate() {
+bool Tetromino::rotate() {
     rotation = (rotation + 1) % 4;
-    if (collideWithBorder()) rotation = (rotation + 3) % 4;
+    if (collideWithBorder()) {
+        rotation = (rotation + 3) % 4;
+        return false;
+    }
+    return true;
 }
