@@ -1,5 +1,5 @@
-#ifndef TETROMINOS_H
-#define TETROMINOS_H
+#ifndef tetrominoes_H
+#define tetrominoes_H
 
 // Collection of all tetraminios and all possible rotation based on
 // Super rotation system https://strategywiki.org/wiki/Tetris/Rotation_systems
@@ -9,7 +9,7 @@
 //             │  ┌ rotation
 //             │  │  ┌ height
 //             │  │  │  ┌ width 
-int tetrominos[7][4][4][4] = {
+int tetrominoes[7][4][4][4] = {
     {
         {
             {0, 0, 0, 0},

@@ -1,6 +1,6 @@
 #include <random>
 
-#include "tetrominos.h"
+#include "tetrominoes.h"
 #include "tetromino.h"
 
 
@@ -33,7 +33,7 @@ int** Tetromino::updateBoard() {
         for (int j = 0; j < 10; ++j) {
             if (i - y < 4 && i - y >= 0 &&
                 j - x < 4 && j - x >= 0) {
-                board[i][j] = tetrominos[type][rotation][i - y][j - x];
+                board[i][j] = tetrominoes[type][rotation][i - y][j - x];
             } else {
                 board[i][j] = 0;
             }
