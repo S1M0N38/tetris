@@ -14,7 +14,7 @@ public:
     int** board;
 
 private:
-    int y = 0;
+    int y = 1;
     int x = 3;
     int rotation;
     int type;
