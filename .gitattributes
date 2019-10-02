@@ -1,4 +1,2 @@
-# Source
-
-*.cpp   text diff=cpp
-*.h     text diff=cpp
+*.cpp   linguist-language=cpp
+*.h     linguist-language=cpp
