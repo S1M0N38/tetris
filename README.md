@@ -68,4 +68,15 @@ the block doesn't speed up.
 
 ### Game graphics
 
-`# TODO`
+The game graphics is designed with portability in mind. There are no special
+chars and the tetrominoes colors are the ones supported by the majority of
+terminals. Initially I thought to render the tetrominoes using the box-block
+(█) but some fonts print them in a disconnect way so I decided to print the
+blocks as whitespaces on a colorful background. The render function runs over
+the board 2d array (20 x 10) and print:
+
+- two whitespaces on the default background if it finds a zero
+- two whitespaces on a colorful background if it finds a nonzero value
+
+An advantage of this text based graphics is that is fairly easy to change
+the graphics size: just increase or decrease your terminal font size.
