@@ -79,7 +79,8 @@ bool Tetromino::moveUp() {
     return true;
 }
 
-bool Tetromino::rotate() {
+bool Tetromino::rotate(bool reverse) {
+    if (reverse) rotation += 2;
     rotation = (rotation + 1) % 4;
     if (collideWithBorder()) {
         rotation = (rotation + 3) % 4;

@@ -11,7 +11,7 @@ public:
     bool moveLeft();
     bool moveDown();
     bool moveUp();
-    bool rotate();
+    bool rotate(bool=false);
     int board[24][10] = {};
 
 private:

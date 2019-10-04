@@ -116,8 +116,8 @@ bool Game::collideWithTetrominoes() {
 void Game::trasformTetromino (int key) {
     switch (key) {
         case KEY_UP:
-            // add rotation index
             tetromino.rotate();
+            if (collideWithTetrominoes()) tetromino.rotate(true);
             break;
         case KEY_RIGHT:
             tetromino.moveRight();
