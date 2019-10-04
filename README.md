@@ -94,4 +94,4 @@ more rows you clear at the same time, more points you get.
 |  ...  | ...            | ...             | ...             | ...             |
 |   n   | 40 * (n + 1)   | 100 * (n + 1)   | 300 * (n + 1)   | 1200 * (n + 1)  |
 
-[Wikipedia - Tetris](https://en.wikipedia.org/wiki/Tetris)
+[Tetris Wiki - Scoring](https://tetris.wiki/Scoring#Original_Nintendo_scoring_system)
