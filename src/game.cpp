@@ -1,21 +1,24 @@
 #include <ncurses.h>
 
 #include "game.h"
+#include "tetromino.h"
 
 Game::Game (): tetromino() {
 }
 
 void Game::render () {
-    // print tetromino test
+    tetromino.updateBoard();
     mvaddch(1, 2, ACS_ULCORNER);
     for (int i = 0; i < 20; ++i) addch(ACS_HLINE);
     addch(ACS_URCORNER);
-    for (int i = 4; i < 24; ++i) {
-        mvaddch(i - 2, 2, ACS_VLINE);
+    int colorRendered;
+    for (int i = 0; i < 20; ++i) {
+        mvaddch(i + 2, 2, ACS_VLINE);
         for (int j = 0; j < 10; ++j) {
-            attron(COLOR_PAIR(tetromino.getBoard()[i][j]));
+            colorRendered = board[i][j] + tetromino.board[i+4][j];
+            attron(COLOR_PAIR(colorRendered));
             printw("  ");
-            attroff(COLOR_PAIR(tetromino.getBoard()[i][j]));
+            attroff(COLOR_PAIR(colorRendered));
         }
         addch(ACS_VLINE);
     }
@@ -25,63 +28,58 @@ void Game::render () {
 }
 
 void Game::updateState () {
-    // push row down
-    tetromino.moveDown();
+    // check collisions with the bottom border 
+    bool collide = !tetromino.moveDown();
+    // check collisions with other tetrominoes
+    if (collideWithTetrominoes()) {
+        tetromino.moveUp();
+        collide = true;
+    }
+
+    if (collide){
+        tetromino.updateBoard();
+        for (int i = 0; i < 20; ++i) {
+            for (int j = 0; j < 10; ++j) {
+                if (board[i][j] == 0) {
+                    board[i][j] = tetromino.board[i+4][j];
+                }    
+            }    
+        }
+        tetromino = Tetromino();
+    }
+
     // if (completedRows % 10 > 9 && level < 9) level += 1;
+}
+
+bool Game::collideWithTetrominoes() {
+    tetromino.updateBoard();
+    for (int i = 0; i < 20; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (board[i][j] != 0 && tetromino.board[i+4][j] != 0) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 void Game::trasformTetromino (int key) {
     switch (key) {
         case KEY_UP:
+            // add rotation index
             tetromino.rotate();
             break;
         case KEY_RIGHT:
             tetromino.moveRight();
+            if (collideWithTetrominoes()) tetromino.moveLeft();
             break;
         case KEY_LEFT:
             tetromino.moveLeft();    
+            if (collideWithTetrominoes()) tetromino.moveRight();
             break;
         case KEY_DOWN:
             tetromino.moveDown();
+            if (collideWithTetrominoes()) tetromino.moveUp();
             break;
     }
 }
-
-
-/*
-void Game::simpleRender() {
-    // this member function is just for testing purpose        
-    drawBoard();
-    for (int i = 0; i <= height; i++) {
-        std::cout << gameRender[i] << std::endl;
-    }
-    
-    // previous solution instant std::cout
-    for (int i = 0; i < height; i++) {
-        std::cout << " │ ";
-        for (int j = 0; j < width; j++) {
-            std::cout << mainMemory[i][j] << " ";
-        }
-        std::cout << "│" << std::endl;    
-    }   
-    std::cout << " └";
-    for (int i = 0; i <= height; i++) std::cout << "─";
-    std::cout << "┘" << std::endl << std::endl;
-}
-
-void Game::drawBoard() {
-    std::string row;
-    for (int i = 0; i < height; i++) {
-        row = " │";
-        for (int j = 0; j < width; j++) {
-            row += " " + std::to_string(board[i][j]);
-        }
-        row += " │ ";
-        gameRender[i] = row;
-    }
-    row = " └";
-    for (int i = 0; i <= width * 2; i++) row += "─";
-    row += "┘ ";
-    gameRender[height] = row; 
-}
-*/
