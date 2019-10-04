@@ -11,28 +11,14 @@ Tetromino::Tetromino() {
     std::uniform_int_distribution<> rotation_gen(0, 3);
     type = type_gen(gen);
     rotation = rotation_gen(gen); 
-
-    // init board
-    /*
-    board = new int* [20 + 4];
-    for (int i = 0; i < 20 + 4; ++i) {
-        board[i] = new int [10];
-    }
-    */
     updateBoard();
 }
 
 Tetromino::~Tetromino() {
-    // deallocate board memory
-    /*
-    for(int i = 0; i < 20 + 4; ++i) delete[] board[i];
-    delete[] board;
-    */
 }   
 
 void Tetromino::updateBoard() {
-    // compute with current x, y, type and rotation
-    // and return board
+    // update board with current x, y, type and rotation
     for (int i = 0; i < 20 + 4; ++i) {
         for (int j = 0; j < 10; ++j) {
             if (i - y < 4 && i - y >= 0 &&
