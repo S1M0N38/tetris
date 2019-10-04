@@ -5,10 +5,10 @@
 // Super rotation system https://strategywiki.org/wiki/Tetris/Rotation_systems
 // I, J, L, O, S, T, Z 
 
-//             ┌ type
-//             │  ┌ rotation
-//             │  │  ┌ height
-//             │  │  │  ┌ width 
+//              ┌ type
+//              │  ┌ rotation
+//              │  │  ┌ height
+//              │  │  │  ┌ width 
 int tetrominoes[7][4][4][4] = {
     {
         {
