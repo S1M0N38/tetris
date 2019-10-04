@@ -25,8 +25,8 @@ void Game::render () {
 
     move(22, 2);
     for (int i = 0; i < 22; ++i) addch(ACS_S1);
-    mvprintw(23, 2, "level: %d", level + 1);
-    mvprintw(24, 2, "score: %d", score);
+    mvprintw(2, 30, "level: %d", level + 1);
+    mvprintw(4, 30, "score: %d", score);
 }
 
 void Game::updateState () {
