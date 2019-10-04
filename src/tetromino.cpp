@@ -13,20 +13,24 @@ Tetromino::Tetromino() {
     rotation = rotation_gen(gen); 
 
     // init board
+    /*
     board = new int* [20 + 4];
     for (int i = 0; i < 20 + 4; ++i) {
         board[i] = new int [10];
     }
+    */
     updateBoard();
 }
 
 Tetromino::~Tetromino() {
     // deallocate board memory
+    /*
     for(int i = 0; i < 20 + 4; ++i) delete[] board[i];
     delete[] board;
+    */
 }   
 
-int** Tetromino::updateBoard() {
+void Tetromino::updateBoard() {
     // compute with current x, y, type and rotation
     // and return board
     for (int i = 0; i < 20 + 4; ++i) {
@@ -39,7 +43,6 @@ int** Tetromino::updateBoard() {
             }
         }
     }
-    return board;
 }
 
 bool Tetromino::collideWithBorder() {
@@ -76,6 +79,15 @@ bool Tetromino::moveDown() {
     y += 1;
     if (collideWithBorder()) {
         y -= 1;
+        return false;
+    }
+    return true;
+}
+
+bool Tetromino::moveUp() {
+    y -= 1;
+    if (collideWithBorder()) {
+        y += 1;
         return false;
     }
     return true;

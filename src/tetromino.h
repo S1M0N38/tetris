@@ -6,12 +6,13 @@ class Tetromino
 public:
     Tetromino();
     ~Tetromino();
-    int** updateBoard();
+    void updateBoard();
     bool moveRight();
     bool moveLeft();
     bool moveDown();
+    bool moveUp();
     bool rotate();
-    int** board;
+    int board[24][10] = {};
 
 private:
     int y = 1;
