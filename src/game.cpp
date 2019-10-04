@@ -25,6 +25,8 @@ void Game::render () {
 
     move(22, 2);
     for (int i = 0; i < 22; ++i) addch(ACS_S1);
+    mvprintw(23, 2, "level: %d", level + 1);
+    mvprintw(24, 2, "score: %d", score);
 }
 
 void Game::updateState () {
@@ -36,6 +38,7 @@ void Game::updateState () {
         collide = true;
     }
 
+    // fix tetromino, update score and spawn a new tetromino 
     if (collide){
         tetromino.updateBoard();
         for (int i = 0; i < 20; ++i) {
@@ -45,10 +48,57 @@ void Game::updateState () {
                 }    
             }    
         }
+        updateScore();
         tetromino = Tetromino();
     }
+}
 
-    // if (completedRows % 10 > 9 && level < 9) level += 1;
+void Game::updateScore() {
+    int rowCleared = 0;
+    for (int i = 0; i < 20; ++i) {
+        if (isRowCompleted(i)) {
+            deleteRow(i);
+            rowCleared += 1;
+        }
+    }
+
+    // Original Nintendo scoring system
+    switch (rowCleared) {
+        case 1:
+            score += 40 * (level + 1);
+            break;
+        case 2:
+            score += 100 * (level + 1);
+            break;
+        case 3:
+            score += 300 * (level + 1);
+            break;
+        case 4:
+            score += 1200 * (level + 1);
+            break;    
+    };
+
+    // level up
+    if (completedRows % 10 > 9 && level < 9) level += 1;
+}
+
+bool Game::isRowCompleted(int row) {
+    for (int j = 0; j < 10; ++j) {
+        if (board[row][j] ==  0) return false;
+    }
+    completedRows += 1;
+    return true;
+}
+
+void Game::deleteRow(int row) {
+    for (int i = row; i > 0; --i) {
+        for (int j = 0; j < 10; ++j) {
+           board[i][j] = board[i - 1][j];
+        }
+    }
+    for (int j = 0; j < 10; ++j) {
+        board[0][j] = 0;
+    }
 }
 
 bool Game::collideWithTetrominoes() {
