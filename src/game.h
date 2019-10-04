@@ -10,12 +10,11 @@ public:
     void render();
     void updateState();
     void trasformTetromino(int);
-    int level = 0;
+    int level = 6; 
 
 private:
-    static const int height = 20;
-    static const int width = 10;
-    int board[height][width] = {};
+    bool collideWithTetrominoes();
+    int board[20][10] = {};
     int completedRows = 0;
     Tetromino tetromino;
 };
