@@ -71,7 +71,7 @@ the block doesn't speed up.
 The game graphics is designed with portability in mind. There are no special
 chars and the tetrominoes colors are the ones supported by the majority of
 terminals. Initially I thought to render the tetrominoes using the box-block
-(█) but some fonts print them in a disconnect way so I decided to print the
+(`█`) but some fonts print them in a disconnect way so I decided to print the
 blocks as whitespaces on a colorful background. The render function runs over
 the board 2d array (20 x 10) and print:
 
@@ -80,3 +80,18 @@ the board 2d array (20 x 10) and print:
 
 An advantage of this text based graphics is that is fairly easy to change
 the graphics size: just increase or decrease your terminal font size.
+
+### Scoring system
+
+The scoring system is the same one used on the *Nintendo's versions of Tetris*;
+more rows you clear at the same time, more points you get.
+
+| level | pts for 1 line | pts for 2 lines | pts for 3 lines | pts for 4 lines |
+|:-----:|:--------------:|:---------------:|:---------------:|:---------------:|
+|   0   | 40             | 100             | 300             | 1200            |
+|   1   | 80             | 200             | 600             | 2400            |
+|   2   | 120            | 300             | 900             | 3600            |
+|  ...  | ...            | ...             | ...             | ...             |
+|   n   | 40 * (n + 1)   | 100 * (n + 1)   | 300 * (n + 1)   | 1200 * (n + 1)  |
+
+[Wikipedia - Tetris](https://en.wikipedia.org/wiki/Tetris)
