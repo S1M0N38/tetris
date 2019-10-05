@@ -7,6 +7,7 @@ Game::Game (): tetromino() {
 }
 
 void Game::render () {
+    // render main board
     tetromino.updateBoard();
     mvaddch(1, 2, ACS_ULCORNER);
     for (int i = 0; i < 20; ++i) addch(ACS_HLINE);
@@ -22,11 +23,22 @@ void Game::render () {
         }
         addch(ACS_VLINE);
     }
-
     move(22, 2);
     for (int i = 0; i < 22; ++i) addch(ACS_S1);
-    mvprintw(2, 30, "level: %d", level + 1);
-    mvprintw(4, 30, "score: %d", score);
+
+    // render score and level 
+    mvaddch(1, 30, ACS_ULCORNER);
+    for (int i = 0; i < 18; ++i) addch(ACS_HLINE);
+    addch(ACS_URCORNER);
+    mvaddch(2, 30, ACS_VLINE);
+    printw(" level: %d", level + 1);
+    mvaddch(2, 49, ACS_VLINE);
+    mvaddch(3, 30, ACS_VLINE);
+    printw(" score: %d", score);
+    mvaddch(3, 49, ACS_VLINE);
+    mvaddch(4, 30, ACS_LLCORNER);
+    for (int i = 0; i < 18; ++i) addch(ACS_HLINE);
+    addch(ACS_LRCORNER);
 }
 
 void Game::updateState () {
