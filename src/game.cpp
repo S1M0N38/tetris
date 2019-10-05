@@ -9,9 +9,9 @@ Game::Game (): tetromino() {
 void Game::render () {
     // render main board
     tetromino.updateBoard();
-    mvaddch(1, 2, ACS_ULCORNER);
-    for (int i = 0; i < 20; ++i) addch(ACS_HLINE);
-    addch(ACS_URCORNER);
+    mvaddch(1, 2, ACS_ULCORNER); // top line
+    hline(ACS_HLINE, 20);
+    mvaddch(1, 23, ACS_URCORNER);
     int colorRendered;
     for (int i = 0; i < 20; ++i) {
         mvaddch(i + 2, 2, ACS_VLINE);
@@ -23,22 +23,19 @@ void Game::render () {
         }
         addch(ACS_VLINE);
     }
-    move(22, 2);
-    for (int i = 0; i < 22; ++i) addch(ACS_S1);
+    mvhline(22, 2, ACS_S1, 22); // bottom line
 
     // render score and level 
-    mvaddch(1, 30, ACS_ULCORNER);
-    for (int i = 0; i < 18; ++i) addch(ACS_HLINE);
-    addch(ACS_URCORNER);
-    mvaddch(2, 30, ACS_VLINE);
-    printw(" level: %d", level + 1);
-    mvaddch(2, 49, ACS_VLINE);
-    mvaddch(3, 30, ACS_VLINE);
-    printw(" score: %d", score);
-    mvaddch(3, 49, ACS_VLINE);
-    mvaddch(4, 30, ACS_LLCORNER);
-    for (int i = 0; i < 18; ++i) addch(ACS_HLINE);
-    addch(ACS_LRCORNER);
+    mvaddch(1, 30, ACS_ULCORNER); // top line
+    hline(ACS_HLINE, 18);
+    mvaddch(1, 49, ACS_URCORNER);
+    mvaddch(4, 30, ACS_LLCORNER); // bottom line
+    hline(ACS_HLINE, 18);
+    mvaddch(4, 49, ACS_LRCORNER); 
+    mvvline(2, 30, ACS_VLINE, 2); // left line
+    mvvline(2, 49, ACS_VLINE, 2); // right line
+    mvprintw(2, 32, "level: %d", level + 1);
+    mvprintw(3, 32, "score: %d", score);
 }
 
 void Game::updateState () {
