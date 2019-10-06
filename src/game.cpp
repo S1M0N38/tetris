@@ -7,35 +7,50 @@ Game::Game (): tetromino() {
 }
 
 void Game::render () {
+    int colorRendered;
+
     // render main board
     tetromino.updateBoard();
-    mvaddch(1, 2, ACS_ULCORNER); // top line
-    hline(ACS_HLINE, 20);
-    mvaddch(1, 23, ACS_URCORNER);
-    int colorRendered;
+    WINDOW* gameWindow = newwin(22, 22, 1, 2);
+    start_color();
+    wborder(gameWindow, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_S1,
+            ACS_ULCORNER, ACS_URCORNER, ACS_S1, ACS_S1);
     for (int i = 0; i < 20; ++i) {
-        mvaddch(i + 2, 2, ACS_VLINE);
         for (int j = 0; j < 10; ++j) {
             colorRendered = board[i][j] + tetromino.board[i+4][j];
-            attron(COLOR_PAIR(colorRendered));
-            printw("  ");
-            attroff(COLOR_PAIR(colorRendered));
+            wattron(gameWindow, COLOR_PAIR(colorRendered));
+            mvwprintw(gameWindow, i + 1, j * 2 + 1, "  ");
+            wattroff(gameWindow, COLOR_PAIR(colorRendered));
         }
-        addch(ACS_VLINE);
     }
-    mvhline(22, 2, ACS_S1, 22); // bottom line
+    wrefresh(gameWindow);
 
     // render score and level 
-    mvaddch(1, 30, ACS_ULCORNER); // top line
-    hline(ACS_HLINE, 18);
-    mvaddch(1, 49, ACS_URCORNER);
-    mvaddch(4, 30, ACS_LLCORNER); // bottom line
-    hline(ACS_HLINE, 18);
-    mvaddch(4, 49, ACS_LRCORNER); 
-    mvvline(2, 30, ACS_VLINE, 2); // left line
-    mvvline(2, 49, ACS_VLINE, 2); // right line
-    mvprintw(2, 32, "level: %d", level + 1);
-    mvprintw(3, 32, "score: %d", score);
+    WINDOW* statsWindow = newwin(4, 20, 1, 30);
+    box(statsWindow, 0 , 0);
+    mvwprintw(statsWindow, 1, 2, "level: %d", level + 1);
+    mvwprintw(statsWindow, 2, 2, "score: %d", score);
+    wrefresh(statsWindow);
+
+    /*
+    // render next tetromino
+    mvaddch(6, 30, ACS_ULCORNER); // top line
+    hline(ACS_HLINE, 5);
+    mvaddch(6, 36, ACS_URCORNER);
+    mvaddch(11, 30, ACS_LLCORNER); // bottom line
+    hline(ACS_HLINE, 5);
+    mvaddch(11, 36, ACS_LRCORNER); 
+    mvvline(6, 30, ACS_VLINE, 5); // left line
+    mvvline(6, 36, ACS_VLINE, 5); // right line
+    for (int i = 1; i < 5; ++i) {
+        for (int j = 3; j < 7; ++j) {
+            colorRendered = nextTetromino.board[i][j];
+            attron(COLOR_PAIR(colorRendered));
+            mvprintw(i, 50 + j * 2, "  ");
+            attroff(COLOR_PAIR(colorRendered));
+        }
+    } 
+    */
 }
 
 void Game::updateState () {
@@ -59,6 +74,10 @@ void Game::updateState () {
         }
         updateScore();
         tetromino = Tetromino();
+        /*
+        tetromino = nextTetromino;
+        nextTetromino = Tetromino();
+        */
     }
 }
 

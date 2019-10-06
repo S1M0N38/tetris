@@ -21,7 +21,6 @@ int main(int argc, char const *argv[]) {
             input = getch();
             game.trasformTetromino(input);
             game.render();
-            refresh();
         }
         game.updateState();
     }
