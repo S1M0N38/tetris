@@ -21,6 +21,7 @@ private:
     int completedRows = 0;
     int score = 0;
     Tetromino tetromino;
+    Tetromino nextTetromino;
 };
 
 #endif

@@ -26,31 +26,24 @@ void Game::render () {
     wrefresh(gameWindow);
 
     // render score and level 
-    WINDOW* statsWindow = newwin(4, 20, 1, 30);
-    box(statsWindow, 0 , 0);
+    WINDOW* statsWindow = newwin(4, 19, 1, 30);
+    box(statsWindow, 0, 0);
     mvwprintw(statsWindow, 1, 2, "level: %d", level + 1);
     mvwprintw(statsWindow, 2, 2, "score: %d", score);
     wrefresh(statsWindow);
 
-    /*
     // render next tetromino
-    mvaddch(6, 30, ACS_ULCORNER); // top line
-    hline(ACS_HLINE, 5);
-    mvaddch(6, 36, ACS_URCORNER);
-    mvaddch(11, 30, ACS_LLCORNER); // bottom line
-    hline(ACS_HLINE, 5);
-    mvaddch(11, 36, ACS_LRCORNER); 
-    mvvline(6, 30, ACS_VLINE, 5); // left line
-    mvvline(6, 36, ACS_VLINE, 5); // right line
+    WINDOW* nextWindow = newwin(7, 15, 7, 32);
+    box(nextWindow, 0, 0);
     for (int i = 1; i < 5; ++i) {
         for (int j = 3; j < 7; ++j) {
             colorRendered = nextTetromino.board[i][j];
-            attron(COLOR_PAIR(colorRendered));
-            mvprintw(i, 50 + j * 2, "  ");
-            attroff(COLOR_PAIR(colorRendered));
+            wattron(nextWindow, COLOR_PAIR(colorRendered));
+            mvwprintw(nextWindow, i + 1, (j - 1) * 2, "  ");
+            wattroff(nextWindow, COLOR_PAIR(colorRendered));
         }
     } 
-    */
+    wrefresh(nextWindow);
 }
 
 void Game::updateState () {
@@ -73,11 +66,8 @@ void Game::updateState () {
             }    
         }
         updateScore();
-        tetromino = Tetromino();
-        /*
         tetromino = nextTetromino;
         nextTetromino = Tetromino();
-        */
     }
 }
 
