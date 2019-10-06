@@ -5,7 +5,6 @@ class Tetromino
 {
 public:
     Tetromino();
-    ~Tetromino();
     void updateBoard();
     bool moveRight();
     bool moveLeft();

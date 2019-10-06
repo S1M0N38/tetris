@@ -14,9 +14,6 @@ Tetromino::Tetromino() {
     updateBoard();
 }
 
-Tetromino::~Tetromino() {
-}   
-
 void Tetromino::updateBoard() {
     // update board with current x, y, type and rotation
     for (int i = 0; i < 20 + 4; ++i) {
@@ -46,7 +43,7 @@ bool Tetromino::collideWithBorder() {
 bool Tetromino::moveRight() {
     x += 1;
     if (collideWithBorder()) {
-         x -= 1;
+        x -= 1;
         return false;
     }
     return true;

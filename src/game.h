@@ -6,7 +6,7 @@
 class Game
 {
 public:
-    Game();
+    Game():tetromino(){};
     void render();
     void updateState();
     void trasformTetromino(int);

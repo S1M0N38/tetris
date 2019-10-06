@@ -3,8 +3,6 @@
 #include "game.h"
 #include "tetromino.h"
 
-Game::Game (): tetromino() {
-}
 
 void Game::render () {
     int colorRendered;
