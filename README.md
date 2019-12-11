@@ -4,6 +4,8 @@ This project is a simple c++ implementation of the famous *Tetris*. It run in th
 terminal (aka command prompt) and use [Extended ASCII](https://en.wikipedia.org/wiki/Extended_ASCII)
 (a widespread character encodings) to recreate a simple user interface.
 
+<p align="center"><img src="" alt="tetris image example"/></p>
+
 ## Installation
 
 1. clone this repo `git clone https://github.com/S1M0N38/tetris.git`
