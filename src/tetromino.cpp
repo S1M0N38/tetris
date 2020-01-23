@@ -10,7 +10,7 @@ Tetromino::Tetromino() {
     std::uniform_int_distribution<> type_gen(0, 6);
     std::uniform_int_distribution<> rotation_gen(0, 3);
     type = type_gen(gen);
-    rotation = rotation_gen(gen); 
+    rotation = rotation_gen(gen);
     updateBoard();
 }
 
@@ -54,7 +54,7 @@ bool Tetromino::moveLeft() {
     if (collideWithBorder()) {
         x += 1;
         return false;
-    } 
+    }
     return true;
 }
 

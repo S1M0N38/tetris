@@ -23,7 +23,7 @@ void Game::render () {
     }
     wrefresh(gameWindow);
 
-    // render score and level 
+    // render score and level
     WINDOW* statsWindow = newwin(4, 19, 1, 30);
     box(statsWindow, 0, 0);
     mvwprintw(statsWindow, 1, 2, "level: %d", level + 1);
@@ -40,12 +40,12 @@ void Game::render () {
             mvwprintw(nextWindow, i + 1, (j - 1) * 2, "  ");
             wattroff(nextWindow, COLOR_PAIR(colorRendered));
         }
-    } 
+    }
     wrefresh(nextWindow);
 }
 
 void Game::updateState () {
-    // check collisions with the bottom border 
+    // check collisions with the bottom border
     bool collide = !tetromino.moveDown();
     // check collisions with other tetrominoes
     if (collideWithTetrominoes()) {
@@ -53,15 +53,15 @@ void Game::updateState () {
         collide = true;
     }
 
-    // fix tetromino, update score and spawn a new tetromino 
+    // fix tetromino, update score and spawn a new tetromino
     if (collide){
         tetromino.updateBoard();
         for (int i = 0; i < 20; ++i) {
             for (int j = 0; j < 10; ++j) {
                 if (board[i][j] == 0) {
                     board[i][j] = tetromino.board[i+4][j];
-                }    
-            }    
+                }
+            }
         }
         updateScore();
         tetromino = nextTetromino;
@@ -91,7 +91,7 @@ void Game::updateScore() {
             break;
         case 4:
             score += 1200 * (level + 1);
-            break;    
+            break;
     };
 
     // level up
@@ -140,7 +140,7 @@ void Game::trasformTetromino (int key) {
             if (collideWithTetrominoes()) tetromino.moveLeft();
             break;
         case KEY_LEFT:
-            tetromino.moveLeft();    
+            tetromino.moveLeft();
             if (collideWithTetrominoes()) tetromino.moveRight();
             break;
         case KEY_DOWN:

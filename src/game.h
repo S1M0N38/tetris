@@ -10,7 +10,7 @@ public:
     void render();
     void updateState();
     void trasformTetromino(int);
-    int level = 0; 
+    int level = 0;
 
 private:
     bool collideWithTetrominoes();

@@ -11,9 +11,9 @@ int main(int argc, char const *argv[]) {
 
     start_color();
     for (int i = 1; i < 8; ++i) init_pair(i, 0, i);
-    noecho();  
+    noecho();
     curs_set(0);
-    keypad(stdscr, TRUE); 
+    keypad(stdscr, TRUE);
     halfdelay(1);
 
     while (true) {
