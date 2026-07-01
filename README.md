@@ -1,5 +1,8 @@
 # Tetris
 
+> [!NOTE]
+> There is no game over / win state. Those are left as an exercise for the reader :)
+
 This project is a simple c++ implementation of the famous *Tetris*. It run in the
 terminal (aka command prompt) and use [Extended ASCII](https://en.wikipedia.org/wiki/Extended_ASCII)
 (a widespread character encodings) to recreate a simple user interface.
