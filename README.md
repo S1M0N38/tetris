@@ -10,7 +10,7 @@ terminal (aka command prompt) and use [Extended ASCII](https://en.wikipedia.org/
 
 1. clone this repo `git clone https://github.com/S1M0N38/tetris.git`
 2. navigate to cloned repo `cd tetris`
-3. complie files `g++ -lncurses src/main.cpp src/tetromino.cpp src/game.cpp -o tetris`
+3. complie files `g++ -lncurses src/main.cpp src/tetromino.cpp src/game.cpp -o tetris` (on Apple silicon you have to use `g++ src/main.cpp src/tetromino.cpp src/game.cpp -o tetris -isysroot $(xcrun --show-sdk-path) -lncurses`)
 
 ## Usage
 
